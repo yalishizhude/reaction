@@ -3,19 +3,28 @@ Template.addressBookForm.helpers({
   /*
    * TODO: update for i18n
    */
-  countryOptions: function() {
-    var country, locale, options, ref, shop;
-    options = [];
-    shop = ReactionCore.Collections.Shops.findOne();
-    ref = shop != null ? shop.locales.countries : void 0;
-    for (country in ref) {
-      locale = ref[country];
-      options.push({
-        'label': locale.name,
-        'value': country
-      });
+  countryOptions: function () {
+    const countries = ReactionCore.Collections.Shops.findOne().locales.countries;
+    const countryOptions = [];
+    for (let locale in countries) {
+      if ({}.hasOwnProperty.call(countries, locale)) {
+        let country = countries[locale];
+        countryOptions.push({
+          label: country.name,
+          value: locale
+        });
+      }
     }
-    return options;
+    countryOptions.sort(function (a, b) {
+      if (a.label < b.label) {
+        return -1;
+      }
+      if (a.label > b.label) {
+        return 1;
+      }
+      return 0;
+    });
+    return countryOptions;
   },
   statesForCountry: function() {
     var locale, options, ref, selectedCountry, shop, state;
