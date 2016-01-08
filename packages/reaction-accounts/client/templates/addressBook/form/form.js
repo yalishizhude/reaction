@@ -2,29 +2,17 @@ Template.addressBookForm.helpers({
 
   /*
    * TODO: update for i18n
+   * TODO: Refactor with duplicate function in core
    */
   countryOptions: function () {
-    const countries = ReactionCore.Collections.Shops.findOne().locales.countries;
-    const countryOptions = [];
-    for (let locale in countries) {
-      if ({}.hasOwnProperty.call(countries, locale)) {
-        let country = countries[locale];
-        countryOptions.push({
-          label: country.name,
-          value: locale
-        });
-      }
-    }
-    countryOptions.sort(function (a, b) {
-      if (a.label < b.label) {
-        return -1;
-      }
-      if (a.label > b.label) {
-        return 1;
-      }
-      return 0;
+    let sortedCountries;
+    Meteor.call("sortedCountries", function(results) {
+      sortedCountries = results;
+      console.log("sortedCountries in callback" + sortedCountries);
+      return sortedCountries;
     });
-    return countryOptions;
+    console.log("sortedCountries in form: " + sortedCountries);
+    return sortedCountries;
   },
   statesForCountry: function() {
     var locale, options, ref, selectedCountry, shop, state;

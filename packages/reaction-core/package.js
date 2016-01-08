@@ -147,6 +147,7 @@ Package.onUse(function (api) {
   api.addFiles("common/methods/layout.js");
   api.addFiles("common/methods/workflow.js");
   api.addFiles("common/methods/cart.js");
+  api.addFiles("common/methods/countries.js");
 
   // methods
   api.addFiles("server/methods/cart.js", "server");
