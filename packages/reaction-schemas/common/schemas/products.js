@@ -244,6 +244,14 @@ ReactionCore.Schemas.Product = new SimpleSchema({
     type: String,
     optional: true
   },
+  a1: {
+    type: String,
+    optional: true
+  },
+  a2: {
+    type: String,
+    optional: true
+  },
   cloneId: {
     type: String,
     optional: true
