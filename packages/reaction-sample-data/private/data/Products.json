@@ -22,7 +22,7 @@
   }],
   "pageTitle": "This is a basic product. You can do a lot with it.",
   "type": "simple",
-  "title": "Basic Reaction Product",
+  "title": "Basic Reaction Product ex",
   "updatedAt": {
     "$date": "2014-06-01T12:17:13.949-0700"
   },
